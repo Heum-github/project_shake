@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.shake.mapper.MainMapper">
+
+<select id = "mainPage" resultType="com.smhrd.shake.entity.CockMix">
+	select * from cock_mix;
+</select>
+
+<select id="cockSelect" parameterType="com.smhrd.shake.entity.CockIngredient" resultType="com.smhrd.shake.entity.CocktailInfo">
+	SELECT A.*, B.*
+	FROM cocktail_info A
+	JOIN cock_ingredient B ON A.cock_name = B.cock_name
+	WHERE
+	<if test="ingredient1 != null">
+		(B.ingredient1 LIKE CONCAT('%', #{ingredient1}, '%') OR
+		B.ingredient2 LIKE CONCAT('%', #{ingredient1}, '%') OR
+		B.ingredient3 LIKE CONCAT('%', #{ingredient1}, '%') OR
+		B.ingredient4 LIKE CONCAT('%', #{ingredient1}, '%') OR
+		B.ingredient5 LIKE CONCAT('%', #{ingredient1}, '%') OR
+		B.ingredient6 LIKE CONCAT('%', #{ingredient1}, '%') OR
+		B.ingredient7 LIKE CONCAT('%', #{ingredient1}, '%') OR
+		B.ingredient8 LIKE CONCAT('%', #{ingredient1}, '%') OR
+		B.ingredient9 LIKE CONCAT('%', #{ingredient1}, '%') OR
+		B.ingredient10 LIKE CONCAT('%', #{ingredient1}, '%'))
+	</if>
+	<if test="ingredient2 != null">
+		AND (B.ingredient1 LIKE CONCAT('%', #{ingredient2}, '%') OR
+		B.ingredient2 LIKE CONCAT('%', #{ingredient2}, '%') OR
+		B.ingredient3 LIKE CONCAT('%', #{ingredient2}, '%') OR
+		B.ingredient4 LIKE CONCAT('%', #{ingredient2}, '%') OR
+		B.ingredient5 LIKE CONCAT('%', #{ingredient2}, '%') OR
+		B.ingredient6 LIKE CONCAT('%', #{ingredient2}, '%') OR
+		B.ingredient7 LIKE CONCAT('%', #{ingredient2}, '%') OR
+		B.ingredient8 LIKE CONCAT('%', #{ingredient2}, '%') OR
+		B.ingredient9 LIKE CONCAT('%', #{ingredient2}, '%') OR
+		B.ingredient10 LIKE CONCAT('%', #{ingredient2}, '%'))
+	</if>
+	<if test="ingredient3 != null">
+		AND (B.ingredient1 LIKE CONCAT('%', #{ingredient3}, '%') OR
+		B.ingredient2 LIKE CONCAT('%', #{ingredient3}, '%') OR
+		B.ingredient3 LIKE CONCAT('%', #{ingredient3}, '%') OR
+		B.ingredient4 LIKE CONCAT('%', #{ingredient3}, '%') OR
+		B.ingredient5 LIKE CONCAT('%', #{ingredient3}, '%') OR
+		B.ingredient6 LIKE CONCAT('%', #{ingredient3}, '%') OR
+		B.ingredient7 LIKE CONCAT('%', #{ingredient3}, '%') OR
+		B.ingredient8 LIKE CONCAT('%', #{ingredient3}, '%') OR
+		B.ingredient9 LIKE CONCAT('%', #{ingredient3}, '%') OR
+		B.ingredient10 LIKE CONCAT('%', #{ingredient3}, '%'))
+	</if>
+	<if test="ingredient4 != null">
+		AND (B.ingredient1 LIKE CONCAT('%', #{ingredient4}, '%') OR
+		B.ingredient2 LIKE CONCAT('%', #{ingredient4}, '%') OR
+		B.ingredient3 LIKE CONCAT('%', #{ingredient4}, '%') OR
+		B.ingredient4 LIKE CONCAT('%', #{ingredient4}, '%') OR
+		B.ingredient5 LIKE CONCAT('%', #{ingredient4}, '%') OR
+		B.ingredient6 LIKE CONCAT('%', #{ingredient4}, '%') OR
+		B.ingredient7 LIKE CONCAT('%', #{ingredient4}, '%') OR
+		B.ingredient8 LIKE CONCAT('%', #{ingredient4}, '%') OR
+		B.ingredient9 LIKE CONCAT('%', #{ingredient4}, '%') OR
+		B.ingredient10 LIKE CONCAT('%', #{ingredient4}, '%'))
+	</if>
+	<if test="ingredient5 != null">
+		AND (B.ingredient1 LIKE CONCAT('%', #{ingredient5}, '%') OR
+		B.ingredient2 LIKE CONCAT('%', #{ingredient5}, '%') OR
+		B.ingredient3 LIKE CONCAT('%', #{ingredient5}, '%') OR
+		B.ingredient4 LIKE CONCAT('%', #{ingredient5}, '%') OR
+		B.ingredient5 LIKE CONCAT('%', #{ingredient5}, '%') OR
+		B.ingredient6 LIKE CONCAT('%', #{ingredient5}, '%') OR
+		B.ingredient7 LIKE CONCAT('%', #{ingredient5}, '%') OR
+		B.ingredient8 LIKE CONCAT('%', #{ingredient5}, '%') OR
+		B.ingredient9 LIKE CONCAT('%', #{ingredient5}, '%') OR
+		B.ingredient10 LIKE CONCAT('%', #{ingredient5}, '%'))
+	</if>
+	<if test="ingredient6 != null">
+		AND (B.ingredient1 LIKE CONCAT('%', #{ingredient6}, '%') OR
+		B.ingredient2 LIKE CONCAT('%', #{ingredient6}, '%') OR
+		B.ingredient3 LIKE CONCAT('%', #{ingredient6}, '%') OR
+		B.ingredient4 LIKE CONCAT('%', #{ingredient6}, '%') OR
+		B.ingredient5 LIKE CONCAT('%', #{ingredient6}, '%') OR
+		B.ingredient6 LIKE CONCAT('%', #{ingredient6}, '%') OR
+		B.ingredient7 LIKE CONCAT('%', #{ingredient6}, '%') OR
+		B.ingredient8 LIKE CONCAT('%', #{ingredient6}, '%') OR
+		B.ingredient9 LIKE CONCAT('%', #{ingredient6}, '%') OR
+		B.ingredient10 LIKE CONCAT('%', #{ingredient6}, '%'))
+	</if>
+	<if test="ingredient7 != null">
+		AND (B.ingredient1 LIKE CONCAT('%', #{ingredient7}, '%') OR
+		B.ingredient2 LIKE CONCAT('%', #{ingredient7}, '%') OR
+		B.ingredient3 LIKE CONCAT('%', #{ingredient7}, '%') OR
+		B.ingredient4 LIKE CONCAT('%', #{ingredient7}, '%') OR
+		B.ingredient5 LIKE CONCAT('%', #{ingredient7}, '%') OR
+		B.ingredient6 LIKE CONCAT('%', #{ingredient7}, '%') OR
+		B.ingredient7 LIKE CONCAT('%', #{ingredient7}, '%') OR
+		B.ingredient8 LIKE CONCAT('%', #{ingredient7}, '%') OR
+		B.ingredient9 LIKE CONCAT('%', #{ingredient7}, '%') OR
+		B.ingredient10 LIKE CONCAT('%', #{ingredient7}, '%'))
+	</if>
+	<if test="ingredient8 != null">
+		AND (B.ingredient1 LIKE CONCAT('%', #{ingredient8}, '%') OR
+		B.ingredient2 LIKE CONCAT('%', #{ingredient8}, '%') OR
+		B.ingredient3 LIKE CONCAT('%', #{ingredient8}, '%') OR
+		B.ingredient4 LIKE CONCAT('%', #{ingredient8}, '%') OR
+		B.ingredient5 LIKE CONCAT('%', #{ingredient8}, '%') OR
+		B.ingredient6 LIKE CONCAT('%', #{ingredient8}, '%') OR
+		B.ingredient7 LIKE CONCAT('%', #{ingredient8}, '%') OR
+		B.ingredient8 LIKE CONCAT('%', #{ingredient8}, '%') OR
+		B.ingredient9 LIKE CONCAT('%', #{ingredient8}, '%') OR
+		B.ingredient10 LIKE CONCAT('%', #{ingredient8}, '%'))
+	</if>
+	<if test="ingredient9 != null">
+		AND (B.ingredient1 LIKE CONCAT('%', #{ingredient9}, '%') OR
+		B.ingredient2 LIKE CONCAT('%', #{ingredient9}, '%') OR
+		B.ingredient3 LIKE CONCAT('%', #{ingredient9}, '%') OR
+		B.ingredient4 LIKE CONCAT('%', #{ingredient9}, '%') OR
+		B.ingredient5 LIKE CONCAT('%', #{ingredient9}, '%') OR
+		B.ingredient6 LIKE CONCAT('%', #{ingredient9}, '%') OR
+		B.ingredient7 LIKE CONCAT('%', #{ingredient9}, '%') OR
+		B.ingredient8 LIKE CONCAT('%', #{ingredient9}, '%') OR
+		B.ingredient9 LIKE CONCAT('%', #{ingredient9}, '%') OR
+		B.ingredient10 LIKE CONCAT('%', #{ingredient9}, '%'))
+	</if>
+	<if test="ingredient10 != null">
+		AND (B.ingredient1 LIKE CONCAT('%', #{ingredient10}, '%') OR
+		B.ingredient2 LIKE CONCAT('%', #{ingredient10}, '%') OR
+		B.ingredient3 LIKE CONCAT('%', #{ingredient10}, '%') OR
+		B.ingredient4 LIKE CONCAT('%', #{ingredient10}, '%') OR
+		B.ingredient5 LIKE CONCAT('%', #{ingredient10}, '%') OR
+		B.ingredient6 LIKE CONCAT('%', #{ingredient10}, '%') OR
+		B.ingredient7 LIKE CONCAT('%', #{ingredient10}, '%') OR
+		B.ingredient8 LIKE CONCAT('%', #{ingredient10}, '%') OR
+		B.ingredient9 LIKE CONCAT('%', #{ingredient10}, '%') OR
+		B.ingredient10 LIKE CONCAT('%', #{ingredient10}, '%'))
+	</if>
+</select>
+
+</mapper>

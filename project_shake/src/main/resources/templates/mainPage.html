@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>SHAKE</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+   content="width=device-width, initial-scale=1, user-scalable=no" />
+<noscript>
+   <link rel="stylesheet" href="assets/css/noscript.css" />
+</noscript>
+<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="assets/css/cockAni.css" />
+<!-- anime.js -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+ <!--font awesome -->
+ <script src="https://kit.fontawesome.com/664170947c.js" crossorigin="anonymous"></script>
+</head>
+<body class="homepage is-preload">
+   <div id="page-wrapper">
+      <!-- Header -->
+      <div id="header">
+         <div class="inner">
+            <header>
+               <h1>
+                  <a href="main" id="logo">SHAKE</a>
+               </h1>
+               <hr />
+               <p>자신만의 칵테일을 만들어 보세요</p>
+            </header>
+            <footer>
+               <a href="#listFieldset" id="buttonCircled" class="button circled scrolly">Start</a>
+            </footer>
+         </div>
+         <!-- Nav -->
+         <nav id="nav">
+            <ul>
+               <li><a href="main">Home</a></li>
+               <li><a href="cocktailInfo">Cocktail</a></li>
+               <li><a href="myRecipe">Myrecipe</a></li>
+               <li><a href="community">Community</a></li>
+               <li><a href="">Mypage</a>
+                  <ul>
+                     <li><a href="userUpdate">내 정보 / 회원정보수정</a></li>
+                     <li><a href="userLike">내가 좋아요한 레시피</a></li>
+                  </ul></li>
+
+               <li><a id="logout">Logout</a></li>
+            </ul>
+            <!-- 모달 -->
+            <div id="myModal" class="modal">
+               <div class="modal-content">
+                  <!-- 모달 내용 -->
+                  <span class="close">&times;</span> <br>
+                  <div class="logoutmodal">로그아웃 하시겠습니까</div>
+                  <br>
+                  <!--img gif 추가-->
+                  <img src="https://media.tenor.com/Za9VC5yMtlsAAAAC/bye.gif">
+                  <br>
+                  <button type="button" id="shakeOut" class="btn btn-primary">
+                     <a href="logout">SHAKE</a>
+                  </button>
+                  <br>
+                  <button type="button" id="kakaoOut" class="btn btn-warning">KAKAO</button>
+                  <br>
+                  <button type="button" id="gogleOut" class="btn btn-light">GOGLE</button>
+                  <br>
+                  <button type="button" id="naverOut" class="btn btn-success">NAVER</button>
+               </div>
+            </div>
+         </nav>
+      </div>
+
+      <!-- 칵테일 제조 페이지 -->
+      <br>
+      <div id="mainContainer" class = "fontArea">
+         <fieldset id="listFieldset">
+            <legend id="listLegend" style="text-align: center">재료리스트</legend>
+            <form action="cockMix" method="get">
+               <div id="listContainer">
+                  <details>
+                     <summary>주류</summary>
+                     <div class="listdiv" th:each="i : ${cockMix}">
+                        <a class="cocking" th:value="${i.drink}" name="ing"></a> <label
+                           th:text="${i.drink}"></label>
+                     </div>
+                  </details>
+                  <details>
+                     <summary>리큐르</summary>
+                     <div class="listdiv" th:each="i : ${cockMix}">
+                        <a class="cocking" th:value=${i.liqueur} name="ing"></a> <label
+                           th:text="${i.liqueur}"></label>
+                     </div>
+                  </details>
+                  <details>
+                     <summary>주스, 음료수</summary>
+                     <div class="listdiv" th:each="i : ${cockMix}">
+                        <a class="cocking" th:value="${i.beverage}" name="ing"></a> <label
+                           th:text="${i.beverage}"></label>
+                     </div>
+                  </details>
+                  <details>
+                     <summary>과일</summary>
+                     <div class="listdiv" th:each="i : ${cockMix}">
+                        <a class="cocking" th:value=${i.fruit}></a> <label
+                           th:text="${i.fruit}" name="ing"></label>
+                     </div>
+                  </details>
+                  <details>
+                     <summary>기타</summary>
+                     <div class="listdiv" th:each="i : ${cockMix}">
+                        <a class="cocking" th:value=${i.etc} name="ing"></a> <label
+                           th:text="${i.etc}"></label>
+                     </div>
+                  </details>
+               </div>
+               <br>
+            </form>
+         </fieldset>
+         <br> <button class="ani" onclick="document.getElementById('audio').play()" ><i class="fa-solid fa-martini-glass fa-bounce fa-2xl" style="color: #d330e8;">SHAKE</i></button>
+         <audio id="audio" src="assets/css/sound/shakeSound.m4a" preload="auto"></audio>
+         
+
+         <div id="animationDiv" class = "fontArea">
+         <form id="ingForm">
+            <div id="ingBox"></div>
+            </form>
+            <div id="shakerLid"></div>
+            <div id="shakerHead"></div>
+            <div id="shakerBottom"></div>
+         </div>
+         <a href="#banner2" class="recipeGo scrolly"><i class="fa-solid fa-martini-glass-citrus fa-bounce fa-xl" style="color: #d330e8;">Check</i></a>   
+      </div>
+            
+      <!-- 제조된 칵테일 보이기 -->
+      <section id="banner">
+         <header class = "fontArea">
+            <h2 id="banner2">
+                <br>제조 가능한 칵테일
+            </h2>
+            <p>칵테일의 맛을 확인하고 평가해주세요!</p>
+            <br>
+            <a href = "cocktailInfo">칵테일 정보 페이지로 이동<i class="fa-solid fa-wine-glass-empty fa-bounce" style="color: #511f29; margin-left: 5px"></i></a>
+            <br>
+            <a href="#listFieldset" class="button scrolly">다시 만들어보기!</a>
+         </header>
+      </section>
+      <section class="carousel">
+         <div id="carouselReel" class="reel"></div>
+      </section>
+
+      <!-- Footer -->
+      <div th:replace="/footer :: footer"></div>
+   </div>
+   <!-- Scripts -->
+   <script src="https://kit.fontawesome.com/067c246777.js"
+      crossorigin="anonymous"></script>
+   <script src="assets/js/jquery.min.js"></script>
+   <script src="assets/js/jquery.dropotron.min.js"></script>
+   <script src="assets/js/jquery.scrolly.min.js"></script>
+   <script src="assets/js/jquery.scrollex.min.js"></script>
+   <script src="assets/js/browser.min.js"></script>
+   <script src="assets/js/breakpoints.min.js"></script>
+   <script src="assets/js/util.js"></script>
+   <script src="assets/js/main.js"></script>
+   <script src="assets/js/cockFloat.js"></script>
+</body>
+</html>

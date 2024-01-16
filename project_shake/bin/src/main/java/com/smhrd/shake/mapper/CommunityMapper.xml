@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.shake.mapper.CommunityMapper">
+
+<select id="commuinityList" resultType="com.smhrd.shake.entity.CommunityInfo">
+	select * from community_info
+</select>
+
+<insert id="communityWrite" parameterType="com.smhrd.shake.entity.CommunityInfo">
+	insert into community_info (user_id, comm_title, comm_content, comm_image, created_at, comm_views, comm_likes) 
+	values (#{user_id}, #{comm_title}, #{comm_content}, #{comm_image}, now(), 1, 2)
+</insert>
+
+<select id="communityContent" parameterType="com.smhrd.shake.entity.CommunityInfo">
+	select * from community_info where comm_idx = #{comm_idx}
+</select>
+</mapper>

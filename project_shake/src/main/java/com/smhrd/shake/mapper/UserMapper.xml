@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.shake.mapper.UserMapper">
+
+<select id="login" parameterType="com.smhrd.shake.entity.UserInfo" resultType="com.smhrd.shake.entity.UserInfo">
+	select * from user_info where user_id = #{user_id} and user_pw = MD5(#{user_pw})
+</select>
+<insert id="join" parameterType="com.smhrd.shake.entity.UserInfo">
+	insert into user_info (user_id, user_pw, user_name, user_nick, user_birthdate, user_joindate)
+	values (#{user_id}, MD5(#{user_pw}), #{user_name}, #{user_nick}, #{user_birthdate}, now());
+</insert>
+
+<select id="socialLoginCheck" parameterType="String" resultType="com.smhrd.shake.entity.UserInfo">
+	select * from user_info where social_id = #{social_id}
+</select>
+
+<insert id ="socialJoin" parameterType="com.smhrd.shake.entity.UserInfo">
+	insert into user_info (user_id, user_name, user_nick, user_birthdate, user_joindate, social_id)
+	values (#{user_id}, #{user_name}, #{user_nick}, #{user_birthdate}, now(), #{social_id});
+</insert>
+<update id = "update" parameterType="com.smhrd.shake.entity.UserInfo">
+	update user_info set user_pw = MD5(#{user_pw}), user_name = #{user_name}, user_nick = #{user_nick} where user_id = #{user_id}
+</update>
+
+<select id="userLike"
+	resultType="com.smhrd.shake.entity.RecipeInfo">
+	SELECT recipe_info.*, COUNT(recipe_likes.rcp_idx) AS
+	likes_count
+	FROM recipe_info
+	LEFT JOIN recipe_likes ON
+	recipe_info.rcp_idx = recipe_likes.rcp_idx
+	WHERE recipe_likes.user_id = #{user_id}
+	GROUP BY recipe_info.rcp_idx;
+</select>
+
+<delete id ="deleteUser">
+	delete from user_info where user_id = #{user_id};
+</delete>
+
+
+</mapper>

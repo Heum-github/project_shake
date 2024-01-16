@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.shake.mapper.CommunityMapper">
+
+	<select id="commuinityList"
+		resultType="com.smhrd.shake.entity.CommunityInfo">
+		select * from community_info 
+	</select>
+
+	<select id="communitySearch" parameterType="String"
+		resultType="com.smhrd.shake.entity.CommunityInfo">
+		select * from community_info where comm_title like '%${communitySearch}%' 
+	</select>
+
+	<insert id="communityWrite"
+		parameterType="com.smhrd.shake.entity.CommunityInfo">
+		insert into community_info (user_id, user_nick, comm_title,
+		comm_content, comm_image,
+		created_at, comm_views)
+		values
+		(#{user_id}, #{user_nick}, #{comm_title}, #{comm_content}, #{comm_image}, now(), 0)
+	</insert>
+
+	<select id="communityContent"
+		parameterType="com.smhrd.shake.entity.CommunityInfo">
+		select * from community_info where comm_idx = #{comm_idx}
+	</select>
+	
+	<delete id="communityDelete">
+		delete from community_info where comm_idx = #{comm_idx}
+	</delete>
+	
+	<insert id = "commCmt" parameterType="com.smhrd.shake.entity.CommunityComment">
+		insert into community_comment (comm_idx, cmt_content, created_at, user_nick) 
+		values (#{comm_idx}, #{cmt_content}, now(), #{user_nick})
+	</insert>
+	
+	<update id="count">
+		update community_info set comm_views = comm_views+1 WHERE comm_idx = #{comm_idx}
+	</update>
+	
+	<select id="commCmtList" resultType="com.smhrd.shake.entity.CommunityComment">
+		select * from community_comment where comm_idx = #{comm_idx}
+	</select>
+	
+</mapper>

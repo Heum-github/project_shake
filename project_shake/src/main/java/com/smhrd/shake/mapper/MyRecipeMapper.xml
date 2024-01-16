@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.shake.mapper.MyRecipeMapper">
+
+	<select id="recipeList" resultType="com.smhrd.shake.entity.RecipeInfo">
+		SELECT recipe_info.*, COUNT(recipe_likes.rcp_idx) AS likes_count
+		FROM recipe_info
+		LEFT JOIN recipe_likes 
+		ON recipe_info.rcp_idx = recipe_likes.rcp_idx
+		GROUP BY recipe_info.rcp_idx;
+	</select>
+
+	<select id="recipeSearch" resultType="com.smhrd.shake.entity.RecipeInfo" parameterType="String">
+		SELECT recipe_info.*, COUNT(recipe_likes.rcp_idx) AS likes_count
+		FROM recipe_info
+		LEFT JOIN recipe_likes 
+		ON recipe_info.rcp_idx = recipe_likes.rcp_idx
+		WHERE recipe_info.rcp_name like '%${recipeSearch}%'
+		GROUP BY recipe_info.rcp_idx;
+	</select>
+
+	<insert id="recipeWrite" parameterType="com.smhrd.shake.entity.RecipeInfo">
+		insert into recipe_info (user_id, user_nick, rcp_name, rcp_ingredient, rcp_image, rcp_desc, created_at, rcp_views)
+		values (#{user_id}, #{user_nick}, #{rcp_name}, #{rcp_ingredient}, #{rcp_image}, #{rcp_desc}, now(), 0)
+	</insert>
+
+	<select id="recipeContent" resultType="com.smhrd.shake.entity.RecipeInfo">
+		SELECT recipe_info.*, COUNT(recipe_likes.rcp_idx) AS likes_count
+		FROM recipe_info
+		LEFT JOIN recipe_likes 
+		ON recipe_info.rcp_idx = recipe_likes.rcp_idx
+		where recipe_info.rcp_idx = #{rcp_idx}
+		GROUP BY recipe_info.rcp_idx;
+		</select>
+
+	<delete id="recipeDelete">
+		delete from recipe_info where rcp_idx = #{rcp_idx}
+	</delete>
+
+	<update id="count">
+		update recipe_info set rcp_views = rcp_views+1 WHERE rcp_idx = #{rcp_idx}
+	</update>
+
+	<select id="checkLike" parameterType="com.smhrd.shake.entity.RecipeLikes" resultType="Integer">
+		select rcp_likes from recipe_likes where user_id = #{user_id} and rcp_idx = #{rcp_idx}
+	</select>
+
+	<insert id="recipeLike" parameterType="com.smhrd.shake.entity.RecipeLikes">
+		insert into recipe_likes (user_id, rcp_idx, rcp_likes)
+		values (#{user_id}, #{rcp_idx}, 1)
+	</insert>
+
+	<delete id="recipeDislike" parameterType="com.smhrd.shake.entity.RecipeLikes">
+		delete from recipe_likes where user_id = #{user_id} and rcp_idx = #{rcp_idx}
+	</delete>
+
+	<select id="recipeChart" resultType="com.smhrd.shake.entity.RecipeTasteInfoAVG">
+		SELECT rcp_idx,
+			AVG(sweet) AS sweet,
+			AVG(bitter) AS bitter,
+			AVG(salty) AS salty,
+			AVG(sour) AS sour,
+			AVG(spicy) AS spicy,
+			AVG(puckery) AS puckery
+		FROM recipe_taste_info
+		WHERE rcp_idx = #{rcp_idx}
+		GROUP BY rcp_idx;
+	</select>
+	<insert id="recipeAssess" parameterType="com.smhrd.shake.entity.RecipeTasteInfo">
+		INSERT INTO recipe_taste_info (rcp_idx, sweet, bitter, salty, sour, spicy, puckery, user_id)
+		VALUES (#{rcp_idx}, #{sweet}, #{bitter}, #{salty}, #{sour}, #{spicy}, #{puckery}, #{user_id})
+	</insert>
+	
+	<insert id = "recipeCmt" parameterType="com.smhrd.shake.entity.RecipeComment">
+		insert into recipe_comment (rcp_idx, cmt_content, created_at, user_nick) 
+		values (#{rcp_idx}, #{cmt_content}, now(), #{user_nick})
+	</insert>
+	
+	<select id="recipeCmtList" resultType="com.smhrd.shake.entity.RecipeComment">
+		select * from recipe_comment where rcp_idx = #{rcp_idx}
+	</select>
+	
+	<delete id="deleteCmt">
+		delete from where rcp_cmt_idx = #{rcp_cmt_idx}
+	</delete>
+	
+</mapper>

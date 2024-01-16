@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERROR PAGE</title>
+    <style>
+         body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: radial-gradient(circle at 13% 47%, rgba(140, 140, 140,0.03) 0%, rgba(140, 140, 140,0.03) 25%,transparent 25%, transparent 100%),radial-gradient(circle at 28% 63%, rgba(143, 143, 143,0.03) 0%, rgba(143, 143, 143,0.03) 16%,transparent 16%, transparent 100%),radial-gradient(circle at 81% 56%, rgba(65, 65, 65,0.03) 0%, rgba(65, 65, 65,0.03) 12%,transparent 12%, transparent 100%),radial-gradient(circle at 26% 48%, rgba(60, 60, 60,0.03) 0%, rgba(60, 60, 60,0.03) 6%,transparent 6%, transparent 100%),radial-gradient(circle at 97% 17%, rgba(150, 150, 150,0.03) 0%, rgba(150, 150, 150,0.03) 56%,transparent 56%, transparent 100%),radial-gradient(circle at 50% 100%, rgba(25, 25, 25,0.03) 0%, rgba(25, 25, 25,0.03) 36%,transparent 36%, transparent 100%),radial-gradient(circle at 55% 52%, rgba(69, 69, 69,0.03) 0%, rgba(69, 69, 69,0.03) 6%,transparent 6%, transparent 100%),linear-gradient(90deg, rgb(255,255,255),rgb(255,255,255));
+        }
+       
+        .inner {
+	        position: relative;
+	        z-index: 1;
+	        margin: 0;
+            width: 1000px;
+	        display: inline-block;
+	        vertical-align: middle;
+        }
+
+        .errorLogo{
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 250px;
+            height: 60px;
+            border-radius: 40px;
+            cursor:pointer;
+            transition: background 0.3s ease;
+            padding: 10px 20px;
+            position: relative;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0,1);
+
+        }
+        .arrow{
+            font-size: 30px;
+            font-weight: 800;
+            position: relative;
+            top: 20px;
+            right: 40px;
+            color: white;
+            animation: sliderArrow 0.7s infinite alternate;
+           text-shadow: 2px 2px 4px raba(0,0,0,0.5);
+            transform: translate(-50%);
+        }
+        /* ErrorLogo 화살표애니메이션 */
+        @keyframes sliderArrow {
+            from{
+                transform: translateY(-50%) translateX(0);
+            }
+            to{
+                transform: translateY(-50%) translateX(10px);
+            }
+        }   
+        a{
+            text-decoration: none;
+            color: white;
+            font-size: 3em;
+            /* border-radius: 30%; */
+            background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%,
+		              rgba(63, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+        
+        }
+            
+        
+        .testWap {
+            border: 4px solid black;
+            display: flex;
+            width: 500px;
+            height: 280px;
+            background: url(https://img.freepik.com/free-vector/nature-roadside-background-scene_1308-131779.jpg?size=626&ext=jpg&ga=GA1.1.386372595.1698192000&semt=ais);
+            margin: auto; /* 가운데 정렬을 위한 margin 속성 추가 */
+        }
+
+        .restartButton{
+            position: relative;
+            border: none;
+            background-color: #0a0a23;
+            color: #fff;
+            border-radius: 10px;
+            padding: 5px;
+            min-height: 10px;
+            min-width: 20px;
+            cursor: pointer;
+            left: 430px;
+            top: 5px;   
+        }
+        .restartButton:focus{
+            outline-color: transparent;
+            outline-style:solid;
+            box-shadow: 0 0 0 4px #5a01a7;
+            transition: 0.7s;
+        }
+        #scoreDisplay{
+           display: inline-block;
+           width: 100px;
+           height: 20px;
+        }
+        /* #test{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        } */
+        .testContainer {
+            display: flex;
+            justify-content: center; /* 가운데 정렬을 위한 justify-content 추가 */
+            height: 80%;
+        }
+        .broke{
+            position: relative;
+            /* right: 100px; */
+            left: 200px;
+            bottom: 10px;
+            height: 300px;
+        }
+        .shakeError{
+            text-align: center;
+            text-justify: center;
+            font-size: 150%;
+            height: 50px;
+            margin: 0px;
+        }
+       
+
+
+    </style>
+</head>
+<body>
+   
+    <div id="page-wrapper">
+		<!-- Header -->
+		<div id="header">
+            
+			<div class="inner">
+               
+                <a href="http://localhost:8089/shake/login" class="errorLogo">
+                    <span class="btn-text">SHAKE</span>
+                    <span class="arrow">➡️</span>
+                </a> 
+				    
+                    
+
+    <div>
+        
+        <img class="broke" src="assets/images/Broke2.png">
+        <pre class="shakeError"><b>404</b> 에러
+        존재하지 않는 페이지입니다.
+        위의 shake버튼을 눌러 로그인페이지에서 다시 로그인해주세요.
+       </pre>
+    <br>
+    <div id="gameScore"></div>
+    <section class="testWap">
+        <div> <!-- 버튼 추가 -->
+            <button class="restartButton">Restart</button>
+           
+           
+        </div>
+        <div class="testContainer">
+            <div id="scoreDisplay">0</div>
+            <canvas id="test"></canvas>
+            
+        </div>        
+    </section>
+</div>
+</div>
+</div>
+</div>
+    <script>
+         var restartButton = document.querySelector('.restartButton');
+        restartButton.addEventListener('click', function () {
+            location.reload(); // 페이지를 새로고침하여 게임을 다시 시작
+        });
+       
+       
+
+        var canvas = document.getElementById('test');
+        var ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth - 100;
+        canvas.height = window.innerHeight - 100;
+
+        
+
+
+        // ctx.fillStyle = 'green';
+        // ctx.fillRect(10, 10, 100, 100);
+
+        //와인 이미지 추가
+        var img2 = new Image();
+        //이미지가 있는src의 경로
+        img2.src = 'assets/images/wine3.png';
+
+        //칵테일 주인공
+        var cock = {
+                    x: 10,
+                    y: 200,
+                    width: 50,
+                    height: 50,
+            draw() {
+                // ctx.fillStyle = 'green';
+                // ctx.fillRect(this.x, this.y, this.width, this.height);
+                ctx.drawImage(img2, this.x,this.y);
+            }
+        }
+        //장애물 이미지 추가
+        var img1 = new Image();
+        //이미지가 있는src의 경로
+        img1.src = 'assets/images/hammer500.png';
+        
+
+        //장애물
+
+        class Cactus{
+            constructor(){
+                this.x =500;
+                this.y =200;
+                this.width=10;
+                this.height=10;
+            }
+            draw(){
+                // ctx.fillStyle='red';
+                // ctx.fillRect(this.x,this.y,this.width,this.height);
+                ctx.drawImage(img1, this.x,this.y);
+            }
+        }
+
+        
+
+        
+        var timer =0;
+        //장애물 추가
+        var cactusList=[];
+        //점프타이머
+        var jumpTimer = 0;
+        var cockAnimation;
+
+        var score = 0; // 점수 변수 생성
+
+        //프레임마다 실행할 코드
+        function frameStart(){
+            cockAnimation = requestAnimationFrame(frameStart)
+            ctx.clearRect(0,0, canvas.width, canvas.height);
+            timer++;
+            score++;
+            document.getElementById('scoreDisplay').innerText = '점수: '+score; // 점수를 div에 표시 사용자의 닉네임 넣어도될듯?
+
+            if(timer % 200 ===0){
+                var cactus= new Cactus();
+                cactusList.push(cactus);
+            }
+            cactusList.forEach((a, i, o )=>{
+            //x좌표가 0미만이면 제거합니다
+            if (a.x<0){
+                o.splice(i,1)
+            }
+            //게임시작
+            a.x--;
+
+            collision(cock, a);
+
+            a.draw();
+        })
+
+        //점프기능
+        if (cockJumping == true){
+            cock.y--;
+            jumpTimer++;
+        }
+        if(cockJumping==false){
+            //최저높이
+            if(cock.y < 200){
+              cock.y++;
+            }
+        }
+
+        if(jumpTimer >100){
+            cockJumping=false;
+            jumpTimer=0;
+        }
+        
+        cock.draw();
+        }
+        frameStart();
+
+
+        // var startButton = document.querySelector('.cockJump');
+        //     startButton.addEventListener('click', function () {
+        //         frameStart();
+        //     });
+        
+
+        //충돌확인
+
+        function collision(cock, cactus){
+            var xDif = cactus.x - (cock.x+cock.width);
+            var yDif = cactus.y - (cock.y+cock.height);
+            if (xDif < 0 && yDif < 0){
+                ctx.clearRect(0,0, canvas.width, canvas.height);
+                cancelAnimationFrame(cockAnimation);
+
+                var gameScoreElement = document.getElementById('gameScore');
+                // gameScoreElement.innerText = "Score: " + score;
+
+                // alert("점수: " + score+"입니다 !");
+            }
+        }
+
+
+
+
+        //점프버튼
+        var cockJumping =false;
+
+        document.addEventListener('keydown',function(e){
+            if (e.code ==='Space'){
+                cockJumping = true;
+            }
+        })
+
+        var spacePressed = false; // 스페이스바가 눌렸는지 여부를 나타내는 변수
+
+
+
+        document.addEventListener('keydown', function (e) {
+            if (e.code === 'Space' && !cockJumping && !spacePressed) {
+            cockJumping = true;
+            spacePressed = true; // 스페이스바가 눌렸음을 나타내는 변수 설정
+            }
+        });
+
+    document.addEventListener('keyup', function (e) {
+            if (e.code === 'Space') {
+            spacePressed = false; // 스페이스바가 눌리지 않음을 나타내는 변수 설정
+            }
+        });
+
+        
+        
+        
+
+
+
+    </script>
+</body>
+</html>

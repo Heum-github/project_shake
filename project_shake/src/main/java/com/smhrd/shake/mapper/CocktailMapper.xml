@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.shake.mapper.CocktailMapper">
+
+	<select id="cocktailList"
+		resultType="com.smhrd.shake.entity.CocktailInfo">
+		select * from cocktail_info
+	</select>
+
+	<select id="cockChart"
+		parameterType="com.smhrd.shake.entity.CocktailTasteInfo">	
+		SELECT cock_idx,
+			AVG(sweet) AS sweet,
+			AVG(bitter) AS bitter,
+			AVG(salty) AS salty,
+			AVG(sour) AS sour,
+			AVG(spicy) AS spicy,
+			AVG(puckery) AS puckery
+		FROM cocktail_taste_info
+		WHERE cock_idx = #{cock_idx}
+		GROUP BY cock_idx;
+		
+		
+	</select>
+
+	<insert id="cockTasteAccess"
+		parameterType="com.smhrd.shake.entity.CocktailTasteInfo">
+		INSERT INTO cocktail_taste_info (cock_idx, sweet, bitter, salty, sour, spicy, puckery, user_id)
+		VALUES (#{cock_idx}, #{sweet}, #{bitter}, #{salty}, #{sour}, #{spicy}, #{puckery}, #{user_id})
+	</insert>
+
+</mapper>

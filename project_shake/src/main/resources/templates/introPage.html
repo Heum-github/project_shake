@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" type="text/css" href="assets/css/introPage.css">
+
+</head>
+<body>
+	<div id="intro" class="content">
+		<h2 class="shake">SHAKE</h2>
+		<h2 class="shake">SHAKE</h2>
+	</div>
+
+	<script>
+		const intro = document.querySelector("#intro");
+		intro.addEventListener("click", changePage);
+		function changePage() {
+			location.href = "/shake/login";
+		}
+	</script>
+</body>
+</html>
+
+

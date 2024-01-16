@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Cocktail</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="assets/css/font.css" />
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+
+</head>
+<body class="right-sidebar is-preload">
+	<div id="page-wrapper">
+		<!-- header -->
+		<div th:replace="/header :: header"></div>
+		<!-- Main -->
+		<div id="cockBack" class="wrapper style1">
+			<!-- 검색 기능 틀-->
+			<div class="input-group">
+				<input type="text" class="form-control rounded" id="search"
+					placeholder="Search" aria-label="Search" list="movie-options"
+					aria-describedby="search-addon" style="margin-right: 10px;" />
+				<button id="searchBtn" class="btn btn-outline-primary">search</button>
+			</div>
+			<br>
+			<!--칵테일 정보 토글 임시데이터-->
+
+			<div id="cocktailPrv" class="fontArea">
+				<details class="cockDetail" th:each="b:${list}">
+					<!--summary에 칵테일 이름-->
+					<input type="hidden" class="cockNames" th:value="${b.cock_idx}"
+						name="cock_idx">
+					<summary th:text="${b.cock_name}">임시데이터1</summary>
+					<!-- 칵테일 이미지 -->
+					<div style="text-align: center; margin-top: 20px">
+						<img th:src="${b.cock_image}" style="height: 300px; width: 300px;">
+					</div>
+					<!--각 p태그에 칵테일정보-->
+					<div style="margin-left: 20px; margin-top: 30px;">
+						<b>재료</b>  <p th:text="${b.cock_ingredient}"></p>
+						<b>제조법</b>  <p th:text="${b.cock_desc}"></p>
+					</div>
+					<!-- 칵테일 차트 보여주기 -->
+					<div style="max-width: 350px; margin-left: auto; margin-right: auto; margin-top: 50px">
+						<canvas class="cockInfoChart"></canvas>
+					</div>
+					<div style="text-align: center; margin-top: 30px;">
+						<b>사용자님이 생각하는 현재 칵테일에 대한 평가를 해주세요!😁</b>
+						<form action="cockTasteAccess" method="get" style="margin-top: 20px">
+							<input type="hidden" th:value="${b.cock_idx}" name="cock_idx">
+							<input type="hidden" th:value="${session.loginMember.user_id}"
+								name="user_id"> 단맛 : <input class="tasteTest" type="number" min="1" max="10"
+								name="sweet"> 신맛 : <input class="tasteTest" type="number" min="1" max="10"
+								name="sour"> 쓴맛 : <input class="tasteTest" type="number" min="1" max="10"
+								name="bitter"> 짠맛 : <input class="tasteTest" type="number" min="1" max="10"
+								name="salty"> 매운맛 : <input class="tasteTest" type="number" min="1" max="10"
+								name="spicy"> 떫은맛 : <input class="tasteTest" type="number" min="1" max="10"
+								name="puckery"> <br> <br> 
+							<div style="text-align: center;">
+								<button class="testSubmit" type="submit">맛평가 제출</button>
+							</div>
+						</form>
+					</div>
+					
+				</details>
+			</div>
+
+		</div>
+	</div>
+	<div th:replace="/footer :: footer"></div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/search.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="assets/js/cockInfoChart.js"></script>
+</body>
+</html>

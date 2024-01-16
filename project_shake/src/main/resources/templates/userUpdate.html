@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<title>회원정보수정</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no" />
+
+<!--bootlink-->
+<link rel="stylesheet" href="assets/css/main.css" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+	crossorigin="anonymous">
+
+<noscript>
+	<link rel="stylesheet" href="assets/css/noscript.css" />
+</noscript>
+
+</head>
+<body class="left-sidebar is-preload">
+	<div id="page-wrapper">
+
+		<!-- header -->
+		<div th:replace="/header :: header"></div>
+		<!-- main -->
+		<!--각 input name 확인바랍니다-->
+		<br>
+		<div id="container">
+			<h2 align="center" style="text-decoration:underline; text-underline-position : under;">회원정보 변경</h2>
+				        
+			<div class="userModfrm_box">
+				<div class="content mt-3 mx-5">
+				<form action="userUpdate/update" method="post" id="userModfrm"
+					role="form" class="userform form-horizontal">
+
+					<div class="form-group mypage_total">
+
+						<label for="userId" class="col-sm-12 control-label">아이디</label>
+
+						<div class="col-sm-12">
+							<input type="email" id="userId" name="user_id"
+								class="form-control" maxlength="13"
+								th:value="${session.loginMember.user_id}" readonly style="outline: none; border: none;"/>
+						</div>
+
+					</div>
+
+					<div class="form-group mypage_total">
+
+						<label for="userPw" class="col-sm-12 control-label">비밀번호</label>
+
+						<div class="col-sm-12">
+							<input type="password" id="userPw" name="user_pw" placeholder="새 비밀번호"
+								class="form-control" maxlength="15" />
+						</div>
+					</div>
+					<div class="form-group mypage_total">
+
+						<label for="userPw" class="col-sm-12 control-label">이름</label>
+
+						<div class="col-sm-12">
+
+							<!-- 이름 값 readonly 사용자가 입력란 수정불가 읽기 전용 데이터 value="사용자 이름"-->
+							<input type="text" id="userName" name="user_name"
+								th:value="${session.loginMember.user_name}" class="form-control"
+								maxlength="13" readonly />
+
+						</div>
+
+					</div>
+
+					<div class="form-group mypage_total">
+
+						<label for="userPw" class="col-sm-12 control-label">닉네임</label>
+
+						<div class="col-sm-12">
+
+							<input type="text" id="userNick" name="user_nick"
+								th:value="${session.loginMember.user_nick}" class="form-control"
+								maxlength="13" />
+
+						</div>
+
+					</div>
+
+					<div class="form-group mypage_total">
+						<!-- 회원정보수정 버튼 태그안에 스타일적용-->
+						<div class="col-sm-12 btn_area" style="text-align: center;">
+							<br>
+
+							<div>
+								<button type="submit" id="myUpdate">수정완료</button>
+							</div>
+
+						</div>
+
+					</div>
+					<br>
+				</form>
+				<div style="text-align: center;">
+					<a id="deleteBtn"><input type="button" value="회원탈퇴"
+						id="deleteUser" /></a>
+				</div>
+			</div>
+		</div>
+
+		<br>
+
+		<!-- Footer -->
+		<div th:replace="/footer :: footer"></div>
+
+	</div>
+
+	<script>
+	const deleteBtn = document.querySelector("#deleteBtn");
+	deleteBtn.addEventListener("click", () => {
+	    if(confirm("정말로 회원 탈퇴를 진행하시겠습니까?")){
+	        location.href = "http://localhost:8089/shake/deleteUser"
+	        alert("회원탈퇴가 완료되었습니다.")
+	    } else {
+	        location.href = "http://localhost:8089/shake/updateUser"
+	    }        
+
+	})
+	</script>
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<!--bootscripts-->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+		integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+		crossorigin="anonymous"></script>
+	<!--fontawwsome scripts-->
+	<script src="https://kit.fontawesome.com/664170947c.js"
+		crossorigin="anonymous"></script>
+</body>
+</html>
