@@ -21,10 +21,9 @@
 - **DataBase** : MySQL 
 - **ORM** : MyBatis
 - **Crawling** : BeautifulSoup
-- **Library** : Thymeleaf, jQuery, Librosa
-- **API** : KakaoMap API
+- **Library** : Thymeleaf, jQuery, ChartJS
+- **API** : Google, Naver, Kakao 소셜 로그인 API, TheCocktailDB API 
+- **협업툴** : Notion, Github, Figma, 
 
 ## 주요 기능
 
-팀 구성 및 역할 : 4인 1조 / 프로젝트 총괄(팀장), 데이터베이스 설계, 
-                                      디자인 개요 설계, 백앤드 구축
