@@ -3,7 +3,7 @@
 
 ## 개발 기간
 * 2023.10.16 ~ 2023.10.31
-* Notion Link : https://bejewled-actor-d05.notion.site/1c8d057ce51e452fa01b01e9e2f7d5bc?v=3a43bb1ac0f94ad69dc80d4533901b21&pvs=4
+* Notion Link : [https://bejewled-actor-d05.notion.site/1c8d057ce51e452fa01b01e9e2f7d5bc?v=3a43bb1ac0f94ad69dc80d4533901b21&pvs=4](https://bejewled-actor-d05.notion.site/DCX-1-ef4793c70b8b474396c08e266ab4f42b?pvs=4)
 
 ## 소개 
 * 칵테일에 대한 제조 레시피 를 제공하고 자신만의 새로운 레시피를 사람들과 공유하고 주류 관련 정보들을  소통할 수 있는 커뮤니티 서비스를 제공수행 
